@@ -15,7 +15,7 @@ const Home = () => {
   const category = useAppSelector(selectCategory);
 
   useEffect(() => {
-    dispatch(fetchProducts(''))
+    dispatch(fetchProducts(''));
   }, [dispatch]);
 
   return (

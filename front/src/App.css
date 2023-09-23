@@ -32,6 +32,7 @@ body{
   font-weight: bold;
   color: #000;
   text-decoration: none;
+  cursor: pointer;
 }
 .logo-img{
   width: 50px;
@@ -117,8 +118,7 @@ body{
   width: 480px;
 }
 .btn-wrap{
-  width: 490px;
-
+  width: 480px;
 }
 .form-label{
   display: block;

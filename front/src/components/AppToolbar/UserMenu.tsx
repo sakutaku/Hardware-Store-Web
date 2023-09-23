@@ -4,6 +4,8 @@ import { useAppDispatch } from '../../app/hook';
 import { logout } from '../../store/usersThunk';
 import { User } from '../../types';
 import logo from "../../assets/images/amazon.svg";
+import {fetchProducts} from "../../store/productsThunk";
+import {addTitle} from "../../store/categoriesSlice";
 
 interface Props {
   user: User;
@@ -19,11 +21,16 @@ const UserMenu: React.FC<Props> = ({user}) => {
     }
   };
 
+  const onLogoClick = () => {
+    dispatch(fetchProducts(''));
+    dispatch(addTitle('All'));
+  };
+
   return (
     <div className="header-inner container">
-      <Link to='/' className="logo">
+      <div className="logo" onClick={onLogoClick}>
         <img src={logo} alt="Amazon" className="logo-img"/>
-      </Link>
+      </div>
 
       <div className="header-inner-right">
         <div className="header-username">
