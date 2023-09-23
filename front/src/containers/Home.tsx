@@ -6,7 +6,7 @@ import { selectProducts, selectProductsLoading } from '../store/productsSlice';
 import { fetchProducts } from '../store/productsThunk';
 import Spinner from '../components/Spinner/Spinner';
 import ProductItem from '../components/ProductItem';
-import {selectCategory} from "../store/categoriesSlice";
+import {addTitle, selectCategory} from "../store/categoriesSlice";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +15,12 @@ const Home = () => {
   const category = useAppSelector(selectCategory);
 
   useEffect(() => {
-    dispatch(fetchProducts(''));
+    try {
+        dispatch(fetchProducts(''));
+    } catch (e) {
+        alert('Something is wrong!');
+    }
+    dispatch(addTitle('All'));
   }, [dispatch]);
 
   return (

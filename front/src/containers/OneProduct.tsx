@@ -21,7 +21,12 @@ const OneProduct = () => {
 
   useEffect(() => {
     if(id) {
-      dispatch(fetchOneProduct(id));
+      try {
+          dispatch(fetchOneProduct(id));
+      } catch (e) {
+        alert('Something is wrong!');
+      }
+
     }
   }, [dispatch, id]);
 

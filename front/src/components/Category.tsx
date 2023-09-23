@@ -12,11 +12,20 @@ const Category = () => {
   const isLoading = useAppSelector(selectCategoriesLoading);
 
   useEffect(() => {
-    dispatch(fetchCategories());
+    try {
+      dispatch(fetchCategories());
+    } catch (e) {
+      alert('Something is wrong!');
+    }
+
   }, [dispatch]);
 
   const categoryClick = async (id: string, title: string) => {
-    dispatch(fetchProducts(id));
+    try {
+      dispatch(fetchProducts(id));
+    } catch (e) {
+      alert('Something is wrong!');
+    }
     dispatch(addTitle(title));
   };
 
