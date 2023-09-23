@@ -4,6 +4,8 @@ body{
   user-select: none;
   font-family: "Poppins", sans-serif;
   background: #ff926b;
+  letter-spacing: 1px;
+
 }
 
 .container{
@@ -140,4 +142,29 @@ body{
 .form-btn:focus{
   color: #000;
   background-color: #ccc;
+}
+
+.categories{
+  background-color: #fff;
+  width: 200px;
+  height: 100vh;
+}
+.categories-list{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.categories-item{
+  padding: 20px 0;
+  font-size: 20px;
+  color: #000000;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}
+.categories-item:hover{
+  background-color: #f8f9fa;
+  color: #ff926b;
 }

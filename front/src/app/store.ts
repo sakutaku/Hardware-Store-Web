@@ -3,6 +3,7 @@ import { persistReducer, persistStore} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { FLUSH, PAUSE, PERSIST , PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import { usersReducer } from '../store/usersSlice';
+import { categoriesReducer } from '../store/categoriesSlice';
 
 
 
@@ -14,6 +15,7 @@ const usersPersistConfig = {
 
 const rootReducer = combineReducers({
   users: persistReducer(usersPersistConfig, usersReducer),
+  categories: categoriesReducer,
 })
 export const store = configureStore({
   reducer: rootReducer,

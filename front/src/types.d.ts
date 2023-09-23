@@ -48,3 +48,7 @@ export interface ILogin{
   username: string,
   password: string,
 }
+export interface ICategory{
+  _id: string,
+  title: string
+}
