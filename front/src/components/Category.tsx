@@ -5,11 +5,13 @@ import { fetchCategories } from '../store/categoriesThunk';
 import Spinner from './Spinner/Spinner';
 import { Slide } from 'react-awesome-reveal';
 import { fetchProducts } from '../store/productsThunk';
+import {useNavigate} from "react-router-dom";
 
 const Category = () => {
   const dispatch = useAppDispatch();
   const categories = useAppSelector(selectCategories);
   const isLoading = useAppSelector(selectCategoriesLoading);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -35,6 +37,7 @@ const Category = () => {
                 </li>
               {categories.map(cat => (
                   <li
+                    key={cat._id}
                     className="categories-item"
                     onClick={() => categoryClick(cat._id)}
                   >

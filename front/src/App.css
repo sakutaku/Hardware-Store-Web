@@ -243,7 +243,6 @@ body{
   text-decoration: none;
 }
 .one-product{
-  height: 100vh;
   color: #fff;
 }
 .one-product-title{
@@ -312,6 +311,7 @@ body{
   border-radius: 30px;
   border: none;
   cursor: pointer;
+  margin-bottom: 80px;
 }
 .delete-btn:hover{
   box-shadow: 5px 5px 5px 0 rgba(222, 218, 216, 0.45);

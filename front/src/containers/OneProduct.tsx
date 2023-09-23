@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 import { Zoom } from 'react-awesome-reveal';
 import AppToolbar from '../components/AppToolbar/AppToolbar';
 import { useAppDispatch, useAppSelector } from '../app/hook';
-import { selectProduct } from '../store/productsSlice';
-import { fetchOneProduct } from '../store/productsThunk';
+import {selectDeleteLoading, selectProduct} from '../store/productsSlice';
+import {deleteProduct, fetchOneProduct} from '../store/productsThunk';
 import { apiURL } from '../constants';
 import Spinner from '../components/Spinner/Spinner';
 import Category from '../components/Category';
 import { selectUser } from '../store/usersSlice';
+import BtnSpinner from "../components/Spinner/BtnSpinner";
 
 
 const OneProduct = () => {
@@ -16,6 +17,7 @@ const OneProduct = () => {
   const dispatch = useAppDispatch();
   const product = useAppSelector(selectProduct);
   const user = useAppSelector(selectUser);
+  const deleteLoading = useAppSelector(selectDeleteLoading);
 
   useEffect(() => {
     if(id) {
@@ -25,11 +27,20 @@ const OneProduct = () => {
 
   const postImage = apiURL + '/' + product?.image;
 
+  const onDelete =  async (id: string) => {
+      if(user?._id === product?.userId) {
+          if(window.confirm('Do you want to delete product?')) {
+              await dispatch(deleteProduct(id));
+          }
+      } else {
+          alert('You can remove only yours products!');
+      }
+  };
+
   return (
     <>
       <AppToolbar/>
-      <Category/>
-      <div className="container one-product-page">
+      <div className="container">
         {
           product ?
             <Zoom>
@@ -67,7 +78,15 @@ const OneProduct = () => {
               {
                 user ?
                   <div className="one-product-delete">
-                    <button type="button" className="delete-btn">Delete Product</button>
+                    <button
+                        type="button"
+                        className="delete-btn"
+                        disabled={deleteLoading}
+                        onClick={() => onDelete(product?._id)}
+                    >
+                        {deleteLoading && <BtnSpinner/>}
+                        Delete Product
+                    </button>
                   </div>
                   :
                   null

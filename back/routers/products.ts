@@ -42,6 +42,7 @@ productsRouter.get('/:id', async (req, res) => {
         const newProduct = {
             _id: product._id,
             description: product.description,
+            userId: user._id,
             user: user.displayName,
             title: product.title,
             image: product.image,

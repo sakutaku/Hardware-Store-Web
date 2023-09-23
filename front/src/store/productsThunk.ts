@@ -11,10 +11,17 @@ export const fetchProducts = createAsyncThunk<IProduct[], string>(
 );
 
 export const fetchOneProduct = createAsyncThunk<IProduct, string>(
-  'posts/fetchOne',
+  'products/fetchOne',
   async (id) => {
 
     const response = await axiosApi.get<IProduct>('/products/' + id);
     return response.data;
+  }
+);
+
+export const deleteProduct = createAsyncThunk<void, string>(
+  'products/delete',
+  async (id) => {
+    await axiosApi.delete('/products/' + id);
   }
 );
