@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import logo from "../../assets/images/amazon.svg";
 import {fetchProducts} from "../../store/productsThunk";
 import {addTitle} from "../../store/categoriesSlice";
@@ -7,10 +7,12 @@ import {useAppDispatch} from "../../app/hook";
 
 const AnonymousMenu = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const onLogoClick = () => {
         dispatch(fetchProducts(''));
         dispatch(addTitle('All'));
+        navigate('/');
     };
 
   return (

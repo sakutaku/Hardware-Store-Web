@@ -71,7 +71,7 @@ const OneProduct = () => {
                 <h3>Seller</h3>
                 <div className="one-product-text">
                   {product.user}
-                  <div>
+                  <div className="one-product-phone">
                     {product.phone}
                   </div>
                 </div>

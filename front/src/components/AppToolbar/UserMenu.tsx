@@ -24,6 +24,7 @@ const UserMenu: React.FC<Props> = ({user}) => {
   const onLogoClick = () => {
     dispatch(fetchProducts(''));
     dispatch(addTitle('All'));
+    navigate('/');
   };
 
   return (
