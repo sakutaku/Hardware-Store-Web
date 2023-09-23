@@ -2,6 +2,7 @@ import React from 'react';
 import { IProduct } from '../types';
 import { apiURL } from '../constants';
 import { Fade } from 'react-awesome-reveal';
+import { Link } from 'react-router-dom';
 
 interface Props {
   product: IProduct
@@ -11,6 +12,7 @@ const ProductItem: React.FC<Props> = ({product}) => {
 
   return (
     <Fade>
+      <Link to={`/products/${product._id}`} className="product-link">
       <div className="product-item">
         <div className="product-item-inner">
           <div>
@@ -24,6 +26,8 @@ const ProductItem: React.FC<Props> = ({product}) => {
           </div>
         </div>
       </div>
+      </Link>
+      
     </Fade>
   );
 };

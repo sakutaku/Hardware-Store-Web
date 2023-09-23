@@ -61,4 +61,5 @@ export interface IProduct {
   image: string;
   category: string;
   user: string;
+  phone: string
 }

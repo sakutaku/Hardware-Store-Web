@@ -2,11 +2,11 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hook';
 import { logout } from '../../store/usersThunk';
-import { IUser } from '../../types';
+import { User } from '../../types';
 import logo from "../../assets/images/amazon.svg";
 
 interface Props {
-  user: IUser;
+  user: User;
 }
 
 const UserMenu: React.FC<Props> = ({user}) => {
@@ -27,8 +27,11 @@ const UserMenu: React.FC<Props> = ({user}) => {
 
       <div className="header-inner-right">
         <div className="header-username">
-          <h2>Hello, {user.username}!
+          <h2>Hello, {user.displayName}!
           </h2>
+        </div>
+        <div>
+          <Link to={'/add-product'} className="header-post">Add product</Link>
         </div>
         <div className="header-logout" onClick={handleLogout}>Logout</div>
       </div>

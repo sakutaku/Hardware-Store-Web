@@ -3,7 +3,8 @@ import { useAppDispatch, useAppSelector } from '../app/hook';
 import { selectCategories, selectCategoriesLoading } from '../store/categoriesSlice';
 import { fetchCategories } from '../store/categoriesThunk';
 import Spinner from './Spinner/Spinner';
-import { Link } from 'react-router-dom';
+import { Slide } from 'react-awesome-reveal';
+import { fetchProducts } from '../store/productsThunk';
 
 const Category = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,10 @@ const Category = () => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
+  const categoryClick = async (id: string) => {
+    dispatch(fetchProducts(id));
+  };
+
   return (
     <div className="categories">
       {
@@ -21,24 +26,24 @@ const Category = () => {
           (<Spinner/>)
           :
           <ul className="categories-list">
-            <Link to="/" className="categories-link">
-              <li
-                className="categories-item"
-              >
-                All
-              </li>
-            </Link>
-            {categories.map(cat => (
-              <Link to={`/products/${cat._id}`} className="categories-link">
+            <Slide>
                 <li
                   className="categories-item"
-                  key={cat._id}
+                  onClick={() => categoryClick('')}
                 >
-                  {cat.title}
+                  All
                 </li>
-              </Link>
+              {categories.map(cat => (
+                  <li
+                    className="categories-item"
+                    onClick={() => categoryClick(cat._id)}
+                  >
+                    {cat.title}
+                  </li>
 
-            ))}
+              ))}
+            </Slide>
+
           </ul>
       }
     </div>

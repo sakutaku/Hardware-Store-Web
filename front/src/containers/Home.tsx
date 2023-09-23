@@ -13,7 +13,7 @@ const Home = () => {
   const fetchLoading = useAppSelector(selectProductsLoading);
 
   useEffect(() => {
-    dispatch(fetchProducts())
+    dispatch(fetchProducts(''))
   }, [dispatch]);
 
   return (
