@@ -33,13 +33,9 @@ const OneProduct = () => {
   const postImage = apiURL + '/' + product?.image;
 
   const onDelete =  async (id: string) => {
-      if(user?._id === product?.userId) {
-          if(window.confirm('Do you want to delete product?')) {
-              await dispatch(deleteProduct(id));
-              navigate('/');
-          }
-      } else {
-          alert('You can remove only yours products!');
+      if(window.confirm('Do you want to delete product?')) {
+          await dispatch(deleteProduct(id));
+          navigate('/');
       }
   };
 
@@ -82,7 +78,7 @@ const OneProduct = () => {
                 </div>
               </div>
               {
-                user ?
+                user &&  user?._id === product?.userId ?
                   <div className="one-product-delete">
                     <button
                         type="button"
