@@ -14,7 +14,7 @@ export interface IProduct {
     title: string;
     description: string;
     price: number;
-    image: string | null;
-    categoryId: string;
+    image: string;
+    category: string;
     user: string;
 }

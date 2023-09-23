@@ -1,10 +1,9 @@
 import express from "express";
-import mongoose from "mongoose";
 import Category from "../models/Category";
 
 const categoriesRouter = express.Router();
 
-categoriesRouter.get('/', async (req, res, next) => {
+categoriesRouter.get('/', async (req, res) => {
     try {
         const categories = await Category.find();
 
@@ -15,11 +14,7 @@ categoriesRouter.get('/', async (req, res, next) => {
         return res.send(categories);
 
     } catch (e) {
-        if(e instanceof mongoose.Error.ValidationError) {
-            return res.status(400).send(e);
-        }
-
-        return next(e);
+        return res.status(500).send(e);
     }
 });
 
