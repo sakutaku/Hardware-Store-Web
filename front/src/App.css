@@ -1,0 +1,143 @@
+body{
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-family: "Poppins", sans-serif;
+  background: #ff926b;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.header{
+  background-color: #fff;
+}
+.header-inner{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f7f7f7;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.logo{
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+.logo-img{
+  width: 50px;
+  height: 50px;
+}
+.header-logout{
+  cursor: pointer;
+  padding: 10px 20px;
+  background: #ff926b;
+  color: #ffffff;
+  border-radius: 30px;
+  margin-left: 15px;
+}
+.header-logout:hover{
+
+}
+.header-inner-right{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.header-register,
+.header-login{
+  font-size: 14px;
+  padding: 10px 15px;
+  color: #000000;
+  display: inline-block;
+  text-decoration: none;
+}
+.header-register:hover,
+.header-login:hover{
+  color: #ff926b;
+}
+.login-page,
+.register-page{
+  margin-top: 50px;
+}
+.login-title,
+.register-title{
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.form{
+  border-radius: 7px;
+  background: #ffffff;
+  box-shadow: 0 15px 30px 0px rgba(0, 0, 0, 0.05);
+  color: #000;
+  border-color: transparent;
+  width: 500px;
+  min-height: 20vh;;
+  border-style: solid;
+  border-width: 1px;
+  padding: 20px 10px;
+  margin: 0 auto;
+}
+.input-wrap{
+  width: 480px;
+}
+.btn-wrap{
+  width: 490px;
+
+}
+.form-label{
+  display: block;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 15px;
+  color: #000
+}
+.form-control{
+  padding: 10px 5px;
+  width: 100%;
+  border: 2px solid #f8f9fa;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.form-control:focus{
+  outline: none;
+  box-shadow: 5px 5px 5px 0 rgb(255, 146, 107);
+}
+.form-control-error{
+  padding: 10px 5px;
+  width: 100%;
+  border: 1px solid #f23637;
+  margin-bottom: 20px;
+}
+.form-control-error:focus{
+  outline: #f23637;
+}
+.error{
+  color: #f23637;
+  font-size: 12px;
+  margin-bottom: 5px;
+  display: block;
+  font-weight: lighter;
+  letter-spacing: 2px;
+}
+.form-btn{
+  background: #ff926b;
+  border: none;
+  margin: 0 auto;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+}
+.form-btn:hover,
+.form-btn:focus{
+  color: #000;
+  background-color: #ccc;
+}
