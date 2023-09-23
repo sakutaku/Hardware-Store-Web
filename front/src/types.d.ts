@@ -52,3 +52,13 @@ export interface ICategory{
   _id: string,
   title: string
 }
+
+export interface IProduct {
+  _id: string;
+  title: string;
+  description: string;
+  price: number;
+  image: string;
+  category: string;
+  user: string;
+}
