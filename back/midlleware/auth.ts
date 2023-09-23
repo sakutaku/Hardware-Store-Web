@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from "express";
-import User from "../modeles/User";
+import User from "../models/User";
 import {HydratedDocument} from "mongoose";
 import {IUser} from "../types";
 

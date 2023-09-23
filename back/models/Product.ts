@@ -17,6 +17,10 @@ const ProductSchema = new Schema({
         type: Number,
         min: [1, 'Too cheap'],
     },
+    image: {
+        type: String,
+        required: true
+    },
     category: {
         type: mongoose.Types.ObjectId,
         ref: 'Category',

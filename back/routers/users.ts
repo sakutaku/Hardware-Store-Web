@@ -1,5 +1,5 @@
 import express from "express";
-import User from "../modeles/User";
+import User from "../models/User";
 import mongoose from "mongoose";
 import auth, {IRequestWithUser} from "../midlleware/auth";
 
