@@ -75,7 +75,7 @@ body{
 .form{
   border-radius: 7px;
   background: #ffffff;
-  box-shadow: 0 15px 30px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.05);
   color: #000;
   border-color: transparent;
   width: 500px;

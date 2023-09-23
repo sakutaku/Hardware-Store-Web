@@ -1,6 +1,6 @@
 import React from 'react';
 import AnonymousMenu from './AnonymousMenu';
-import { Slide, Zoom } from 'react-awesome-reveal';
+import { Slide } from 'react-awesome-reveal';
 import UserMenu from './UserMenu';
 import { useAppSelector } from '../../app/hook';
 import { selectUser } from '../../store/usersSlice';
