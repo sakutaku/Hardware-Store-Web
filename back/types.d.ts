@@ -1,3 +1,5 @@
+import {Types} from "mongoose";
+
 export interface IUser {
     username: string;
     password: string;
@@ -8,4 +10,13 @@ export interface IUser {
 
 export interface ICategory {
     title: string;
+}
+
+export interface IProduct {
+    title: string;
+    description: string;
+    price: number;
+    image: string | null;
+    categoryId: string;
+    user: string;
 }

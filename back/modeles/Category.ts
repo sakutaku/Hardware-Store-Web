@@ -1,9 +1,8 @@
 import mongoose from "mongoose";
-import {ICategory} from "../types";
 
 const Schema = mongoose.Schema;
 
-const CategorySchema = new Schema<ICategory>({
+const CategorySchema = new Schema({
     title: {
         type: String,
         required: true,
