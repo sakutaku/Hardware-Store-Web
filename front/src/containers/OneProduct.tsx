@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import { Zoom } from 'react-awesome-reveal';
 import AppToolbar from '../components/AppToolbar/AppToolbar';
 import { useAppDispatch, useAppSelector } from '../app/hook';
@@ -7,7 +7,6 @@ import {selectDeleteLoading, selectProduct} from '../store/productsSlice';
 import {deleteProduct, fetchOneProduct} from '../store/productsThunk';
 import { apiURL } from '../constants';
 import Spinner from '../components/Spinner/Spinner';
-import Category from '../components/Category';
 import { selectUser } from '../store/usersSlice';
 import BtnSpinner from "../components/Spinner/BtnSpinner";
 
@@ -18,6 +17,7 @@ const OneProduct = () => {
   const product = useAppSelector(selectProduct);
   const user = useAppSelector(selectUser);
   const deleteLoading = useAppSelector(selectDeleteLoading);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(id) {
@@ -31,6 +31,7 @@ const OneProduct = () => {
       if(user?._id === product?.userId) {
           if(window.confirm('Do you want to delete product?')) {
               await dispatch(deleteProduct(id));
+              navigate('/');
           }
       } else {
           alert('You can remove only yours products!');

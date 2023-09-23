@@ -1,6 +1,6 @@
 import { IProduct } from '../types';
 import { createSlice } from '@reduxjs/toolkit';
-import {deleteProduct, fetchOneProduct, fetchProducts} from './productsThunk';
+import {createProducts, deleteProduct, fetchOneProduct, fetchProducts} from './productsThunk';
 import { RootState } from '../app/store';
 
 interface ProductsState {
@@ -9,6 +9,7 @@ interface ProductsState {
   product: IProduct | null,
   fetchOneLoading: boolean,
   deleteLoading: boolean,
+  createLoading: boolean,
 }
 
 const initialState: ProductsState = {
@@ -16,7 +17,8 @@ const initialState: ProductsState = {
   fetchLoading: false,
   product: null,
   fetchOneLoading: false,
-  deleteLoading: false
+  deleteLoading: false,
+  createLoading: false
 };
 
 export const productsSlice = createSlice({
@@ -44,6 +46,15 @@ export const productsSlice = createSlice({
     builder.addCase(fetchOneProduct.rejected, (state) => {
       state.fetchOneLoading = false;
     });
+    builder.addCase(createProducts.pending, (state) => {
+      state.createLoading = true;
+    });
+    builder.addCase(createProducts.fulfilled, (state) => {
+      state.createLoading = false;
+    });
+    builder.addCase(createProducts.rejected, (state) => {
+      state.createLoading = false;
+    });
     builder.addCase(deleteProduct.pending, (state) => {
       state.deleteLoading = true;
     });
@@ -61,3 +72,4 @@ export const selectProducts = (state: RootState) => state.products.products;
 export const selectProductsLoading = (state: RootState) => state.products.fetchLoading;
 export const selectProduct = (state: RootState) => state.products.product;
 export const selectDeleteLoading = (state: RootState) => state.products.deleteLoading;
+export const selectCreateLoading = (state: RootState) => state.products.createLoading;

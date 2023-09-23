@@ -6,11 +6,13 @@ import { selectProducts, selectProductsLoading } from '../store/productsSlice';
 import { fetchProducts } from '../store/productsThunk';
 import Spinner from '../components/Spinner/Spinner';
 import ProductItem from '../components/ProductItem';
+import {selectCategory} from "../store/categoriesSlice";
 
 const Home = () => {
   const dispatch = useAppDispatch();
   const products= useAppSelector(selectProducts);
   const fetchLoading = useAppSelector(selectProductsLoading);
+  const category = useAppSelector(selectCategory);
 
   useEffect(() => {
     dispatch(fetchProducts(''))
@@ -20,15 +22,19 @@ const Home = () => {
     <>
       <AppToolbar/>
       <Category/>
-      <div className="container products-page">
-        {fetchLoading ?
-          (<Spinner/>) :
-          (
-            products.map(product => (
-              <ProductItem product={product} key={product._id}/>
-            ))
-          )
-        }
+      <div className="container">
+          <h1 className="category-title">{category}</h1>
+          <div className="products-page">
+              {fetchLoading ?
+                  (<Spinner/>) :
+                  (
+                      products.map(product => (
+                          <ProductItem product={product} key={product._id}/>
+                      ))
+                  )
+
+              }
+          </div>
       </div>
     </>
   );

@@ -46,11 +46,15 @@ body{
 }
 .header-logout{
   cursor: pointer;
-  padding: 10px 20px;
-  background: #ff926b;
+  padding: 10px 40px 10px 20px;
+  background-color: #ff926b;
   color: #ffffff;
   border-radius: 30px;
   margin-left: 15px;
+  background-image: url("assets/images/logout.svg");
+  background-size: 25px;
+  background-repeat: no-repeat;
+  background-position: right;
 }
 .header-logout:hover ,
 .header-post:hover{
@@ -73,6 +77,16 @@ body{
 .header-register:hover,
 .header-login:hover{
   color: #ff926b;
+}
+.header-username h2{
+  font-weight: 300;
+}
+.category-title{
+  text-align: center;
+  margin-left: 200px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: lighter;
 }
 .login-page,
 .register-page{
@@ -286,6 +300,9 @@ body{
 .one-product-user-info h3{
   margin: 0;
 }
+.one-product-user-info{
+ margin-bottom: 30px;
+}
 .one-product-text{
   color: #fff;
   width: 700px;
@@ -313,6 +330,23 @@ body{
   cursor: pointer;
   margin-bottom: 80px;
 }
-.delete-btn:hover{
+.delete-btn:hover,
+.browse-btn:hover{
   box-shadow: 5px 5px 5px 0 rgba(222, 218, 216, 0.45);
+}
+.browse-btn{
+    padding: 10px 20px;
+    background: #ff926b;
+    color: #fff;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.add-title{
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: lighter;
 }

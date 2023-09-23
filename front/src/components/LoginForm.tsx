@@ -63,7 +63,7 @@ const LoginForm = () => {
             error ?   <span className="error">{error.error}</span> : null
           }
           <input
-            type="text"
+            type="password"
             className={error ? 'form-control-error' : 'form-control'}
             name="password"
             id="password"

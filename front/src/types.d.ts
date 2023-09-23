@@ -64,3 +64,12 @@ export interface IProduct {
   phone: string;
   userId: string
 }
+
+export interface IProductMutation {
+  title: string;
+  description: string;
+  price: string;
+  image: File | null;
+  category: string;
+}
+

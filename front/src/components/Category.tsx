@@ -1,24 +1,23 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hook';
-import { selectCategories, selectCategoriesLoading } from '../store/categoriesSlice';
+import {addTitle, selectCategories, selectCategoriesLoading} from '../store/categoriesSlice';
 import { fetchCategories } from '../store/categoriesThunk';
 import Spinner from './Spinner/Spinner';
 import { Slide } from 'react-awesome-reveal';
 import { fetchProducts } from '../store/productsThunk';
-import {useNavigate} from "react-router-dom";
 
 const Category = () => {
   const dispatch = useAppDispatch();
   const categories = useAppSelector(selectCategories);
   const isLoading = useAppSelector(selectCategoriesLoading);
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  const categoryClick = async (id: string) => {
+  const categoryClick = async (id: string, title: string) => {
     dispatch(fetchProducts(id));
+    dispatch(addTitle(title));
   };
 
   return (
@@ -31,7 +30,7 @@ const Category = () => {
             <Slide>
                 <li
                   className="categories-item"
-                  onClick={() => categoryClick('')}
+                  onClick={() => categoryClick('', 'All')}
                 >
                   All
                 </li>
@@ -39,7 +38,7 @@ const Category = () => {
                   <li
                     key={cat._id}
                     className="categories-item"
-                    onClick={() => categoryClick(cat._id)}
+                    onClick={() => categoryClick(cat._id, cat.title)}
                   >
                     {cat.title}
                   </li>

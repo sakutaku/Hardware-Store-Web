@@ -5,18 +5,24 @@ import { RootState } from '../app/store';
 
 interface CategoriesState {
   categories: ICategory[],
-  fetchLoading: boolean
+  fetchLoading: boolean,
+  category: string
 }
 
 const initialState: CategoriesState = {
   categories: [],
-  fetchLoading: false
+  fetchLoading: false,
+  category: ''
 };
 
 export const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
-  reducers: {},
+  reducers: {
+    addTitle: (state, action) => {
+      state.category = action.payload;
+    }
+  },
   extraReducers: builder => {
     builder.addCase(fetchCategories.pending, (state) => {
       state.fetchLoading = true;
@@ -34,4 +40,7 @@ export const categoriesSlice = createSlice({
 export const categoriesReducer = categoriesSlice.reducer;
 export const selectCategories = (state: RootState) => state.categories.categories;
 export const selectCategoriesLoading = (state: RootState) => state.categories.fetchLoading;
+
+export const {addTitle} = categoriesSlice.actions;
+export const selectCategory = (state: RootState) => state.categories.category;
 
