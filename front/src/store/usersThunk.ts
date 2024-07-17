@@ -21,7 +21,6 @@ export const register = createAsyncThunk<
       if( isAxiosError(e) && e.response && e.response.status === 400 ) {
         return rejectWithValue(e.response.data);
       }
-
       throw e;
     }
   }

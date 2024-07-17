@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import BtnSpinner from './Spinner/BtnSpinner';
 import { useAppDispatch, useAppSelector } from '../app/hook';
 import { IRegister } from '../types';
-import { register } from '../store/usersThunk';
+import { register, loginUser } from '../store/usersThunk';
 import { selectRegisterError, selectRegisterLoading } from '../store/usersSlice';
 
 const RegisterForm = () => {
@@ -27,14 +27,18 @@ const RegisterForm = () => {
       [name]: value
     }));
   };
+
   const onSubmitEventHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await dispatch(register(state)).unwrap();
-      alert('Congrats! You\'ve been registered!');
+      await dispatch(loginUser({
+        username: state.username,
+        password: state.password,
+      })).unwrap();
       navigate('/');
     } catch (e) {
-      alert('Something is wrong!')
+      console.log(e);
     } finally {
       setState(() => ({
         username: '',
@@ -52,6 +56,11 @@ const RegisterForm = () => {
       return undefined;
     }
   };
+
+  const isFormValid = () => {
+    return Object.values(state).every(value => value.trim() !== '');
+  };
+
   return (
     <form className="form" onSubmit={onSubmitEventHandler}>
       <div>
@@ -113,8 +122,8 @@ const RegisterForm = () => {
         <div className="btn-wrap">
           <button
             type="submit"
-            className="form-btn"
-            disabled={registerLoading}
+            className={isFormValid() ? "form-btn" : "form-btn-dis"}
+            disabled={registerLoading || !isFormValid()}
           >
             {registerLoading && <BtnSpinner/>}
             Register

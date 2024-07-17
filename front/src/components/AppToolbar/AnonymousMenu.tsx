@@ -20,9 +20,14 @@ const AnonymousMenu = () => {
       <div className="logo" onClick={onLogoClick}>
         <img src={logo} alt="Amazon" className="logo-img"/>
       </div>
-      <div>
+      <div className="header-inner-enter-desktop">
         <Link to={'/register'} className="header-register">Register</Link>
         <Link to={'/login'} className="header-login">Login</Link>
+      </div>
+      <div className="header-inner-right-mini">
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>
   );

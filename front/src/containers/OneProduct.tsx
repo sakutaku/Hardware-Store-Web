@@ -20,6 +20,7 @@ const OneProduct = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.body.classList.remove('popup-open');
     if(id) {
       try {
           dispatch(fetchOneProduct(id));

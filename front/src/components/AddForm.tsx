@@ -24,6 +24,7 @@ const AddForm = () => {
 
     useEffect(() => {
         dispatch(fetchCategories());
+        document.body.classList.remove('popup-open');
     }, [dispatch]);
 
     const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -67,6 +68,14 @@ const AddForm = () => {
                 image: null
             }));
         }
+    };
+
+    const isFormValid = () => {
+        return state.title.trim() !== '' &&
+               state.category.trim() !== '' &&
+               state.price.trim() !== '' &&
+               state.description.trim() !== '' &&
+               state.image !== null;
     };
 
 
@@ -124,8 +133,8 @@ const AddForm = () => {
             <div className="input-wrap">
                 <button
                     type="submit"
-                    className="form-btn"
-                    disabled={createLoading}
+                    className={isFormValid() ? "form-btn" : "form-btn-dis"}
+                    disabled={createLoading || !isFormValid()}
                 >
                     {createLoading && <BtnSpinner/>}
                     Create

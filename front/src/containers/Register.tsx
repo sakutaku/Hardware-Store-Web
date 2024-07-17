@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppToolbar from '../components/AppToolbar/AppToolbar';
 import RegisterForm from '../components/RegisterForm';
 import { Fade } from 'react-awesome-reveal';
 
 const Register = () => {
+  useEffect(() => {
+    document.body.classList.remove('popup-open');
+  }, []);
+
   return (
     <>
       <AppToolbar/>

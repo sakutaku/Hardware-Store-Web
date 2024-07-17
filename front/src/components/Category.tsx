@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { useAppDispatch, useAppSelector } from '../app/hook';
 import {addTitle, selectCategories, selectCategoriesLoading} from '../store/categoriesSlice';
 import { fetchCategories } from '../store/categoriesThunk';
 import Spinner from './Spinner/Spinner';
 import { Slide } from 'react-awesome-reveal';
 import { fetchProducts } from '../store/productsThunk';
+import 'swiper/css';
+import BtnSpinner from './Spinner/BtnSpinner';
 
 const Category = () => {
   const dispatch = useAppDispatch();
@@ -56,6 +59,42 @@ const Category = () => {
             </Slide>
 
           </ul>
+      }
+      {
+        isLoading ? 
+        (<BtnSpinner/>) 
+        :
+        <div className="categoris-list-mini">
+          <Swiper
+              slidesPerView={3}
+              spaceBetween={10}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <span
+                  className="categories-item"
+                  onClick={() => categoryClick('', 'All')}
+                >
+                  All
+                </span>
+              </SwiperSlide>
+              {categories.map(cat => (
+                <SwiperSlide 
+                key={cat._id}>
+                  <span
+                    key={cat._id}
+                    className="categories-item"
+                    onClick={() => categoryClick(cat._id, cat.title)}
+                  >
+                    {cat.title}
+                  </span>
+                </SwiperSlide>
+                  
+
+              ))}
+            </Swiper>
+        </div>
+       
       }
     </div>
   );

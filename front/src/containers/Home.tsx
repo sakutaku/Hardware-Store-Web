@@ -17,6 +17,7 @@ const Home = () => {
   useEffect(() => {
     try {
         dispatch(fetchProducts(''));
+        document.body.classList.remove('popup-open');
     } catch (e) {
         alert('Something is wrong!');
     }

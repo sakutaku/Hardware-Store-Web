@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppToolbar from '../components/AppToolbar/AppToolbar';
 import LoginForm from '../components/LoginForm';
 import { Fade } from 'react-awesome-reveal';
 
 const Login = () => {
+
+  useEffect(() => {
+      document.body.classList.remove('popup-open');
+  }, []);
+  
   return (
     <>
       <AppToolbar/>
