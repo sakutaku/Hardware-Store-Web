@@ -37,7 +37,7 @@ const UserMenu: React.FC<Props> = ({user}) => {
 
   const onBurgerClick = () => {
     setShowPopup(true);
-  }
+  };
 
   return (
     <div className="header-inner container">

@@ -40,6 +40,10 @@ const LoginForm = () => {
     }
   };
 
+  const isFormValid = () => {
+    return Object.values(state).every(value => value.trim() !== '');
+  };
+
   return (
     <form className="form" onSubmit={submitFormHandler}>
       <div>
@@ -74,8 +78,8 @@ const LoginForm = () => {
         <div className=" btn-wrap">
           <button
             type="submit"
-            className="form-btn"
-            disabled={loginLoading}
+            className={isFormValid() ? "form-btn" : "form-btn-dis"}
+            disabled={loginLoading || !isFormValid()}
           >
             {loginLoading && <BtnSpinner/>}
             Log in

@@ -36,7 +36,7 @@ const Category = () => {
     <div className="categories">
       {
         isLoading ?
-          (<Spinner/>)
+          (<BtnSpinner/>)
           :
           <ul className="categories-list">
             <Slide>
@@ -61,9 +61,6 @@ const Category = () => {
           </ul>
       }
       {
-        isLoading ? 
-        (<BtnSpinner/>) 
-        :
         <div className="categoris-list-mini">
           <Swiper
               slidesPerView={3}
